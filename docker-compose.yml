@@ -1,0 +1,10 @@
+version: '3'
+services:
+  server:
+    build: './server'
+    command: yarn run start
+    container_name: fs_server
+    ports:
+      - "3003:3000"
+    volumes:
+      - "./server:/src"
