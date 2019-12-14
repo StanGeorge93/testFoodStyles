@@ -9,8 +9,6 @@ const Mutation = {
   async login(parent, {loginInput :{ email, password  }}, { db }) {
     // Validate user data
 
-    console.log("INSIDE REGISTEEER",email, password);
-
     const { valid, errors } = validator.validateLoginInput({
       email,
       password,
@@ -22,8 +20,6 @@ const Mutation = {
     }
 
     const user = await db.User.findOne({ email });
-
-    console.log("FOUND USER", user);
 
     if (!user) {
       throw new UserInputError('User does not exist', {
@@ -48,15 +44,6 @@ const Mutation = {
 
     const [token, refreshToken] = await createTokens(user, SECRET, refreshTokenSecret);
 
-    // tokenList[refreshToken] = {
-    //   "status": "Logged in",
-    //   "token": token,
-    //   "refreshToken": refreshToken;
-    // }
-
-    console.log("TOKENUS", token);
-    console.log("REFRESH TOKEN", refreshToken);
-
     return {
       refreshToken,
       token
@@ -66,7 +53,6 @@ const Mutation = {
   async register(parent, {registerInput :{ name, email, password, confirmPassword }}, { db }) {
     // Validate user data
 
-    console.log("INSIDE REGISTEEER", name, email, password, confirmPassword);
 
     const { valid, errors } = validator.validateRegisterInput({
       name,
@@ -97,8 +83,6 @@ const Mutation = {
       name: name,
       password: hashedPassword
     });
-
-    console.log("USER", user);
 
     return {
       user
