@@ -28,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    token: DataTypes.STRING,
+    refreshToken: DataTypes.STRING,
+    refreshTokenSecret: DataTypes.STRING
   });
 
   return User;

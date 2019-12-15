@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: white;
+  border: 1px solid white;
+  padding: 5px 8px;
+  margin-left: 10px;
+
+  text-decoration: none;
+
+  &:hover {
+    background: #4765b5;
+  }
+
+  button, button:hover {
+    background: transparent;
+  }
+}
+
+.error {
+  color: red;
+}

@@ -1,16 +1,11 @@
 export default `
   type Query {
-    dummy: String,
     user: User
   }
   type User {
     id: ID!
     name: String!
     email: String!
-    createdAt: String!
-  }
-  type Test {
-    test: String!
   }
   input RegisterInput {
     name: String!
@@ -23,14 +18,24 @@ export default `
     password: String!
   }
   type RegisterResponse {
-    user: User
+    name: String,
+    email: String
   }
   type LoginResponse {
     token: String
     refreshToken: String
   }
+  type RefreshAuthTokenResponse {
+    token: String
+  }
+  type MeResponse {
+    ok: Boolean!,
+    name: String
+  }
   type Mutation {
     register(registerInput: RegisterInput): RegisterResponse!
     login(loginInput: LoginInput): LoginResponse!
+    me(token: String): MeResponse!
+    refreshAuthToken(token: String): RefreshAuthTokenResponse!
   }
 `;
