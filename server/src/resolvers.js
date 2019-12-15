@@ -67,7 +67,6 @@ const Root = {
         token
       };
     } catch (error) {
-      throw new Error(error);
       const loginError = typeof error === "string" ? error : "Something went wrong";
       throw new Error(loginError)
     }
@@ -158,6 +157,8 @@ const Root = {
         expiresIn: '1h',
       },
     );
+
+    await repository.update(userInDb, {token: newToken});
 
     return {
       token
